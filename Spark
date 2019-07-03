@@ -1,0 +1,26 @@
+//Import orders table from mysql as text file to the destination /user/cloudera/problem5/text. 
+Fields should be terminated by a tab character ("\t") character and lines should be terminated by new line character ("\n")
+
+sqoop import \
+--connect jdbc:mysql://ms.itversity.com/retail_db \
+--username retail_user \
+--password itversity \
+--table orders \
+--fields-terminated-by '\t' \
+--lines-terminated-by '\n' \
+--target-dir /user/sumitsinha1680/problem5/text
+
+//Import orders table from mysql  into hdfs to the destination /user/cloudera/problem5/avro. File should be stored as avro file
+
+sqoop import \
+--connect jdbc:mysql://ms.itversity.com/retail_db \
+--username retail_user \
+--password itversity \
+--table orders \
+--target-dir /user/sumitsinha1680/problem5/avro \
+--as-avrodatafile
+
+//Import orders table from mysql  into hdfs  to folders /user/cloudera/problem5/parquet. File should be stored as parquet file
+
+
+
