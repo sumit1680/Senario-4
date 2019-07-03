@@ -13,6 +13,7 @@ sqoop import \
 //Import orders table from mysql  into hdfs to the destination /user/cloudera/problem5/avro. File should be stored as avro file
 
 sqoop import \
+-Dmapreduce.job.user.classpath.first=true \
 --connect jdbc:mysql://ms.itversity.com/retail_db \
 --username retail_user \
 --password itversity \
@@ -21,6 +22,19 @@ sqoop import \
 --as-avrodatafile
 
 //Import orders table from mysql  into hdfs  to folders /user/cloudera/problem5/parquet. File should be stored as parquet file
+sqoop import \
+--connect jdbc:mysql://ms.itversity.com/retail_db \
+--username retail_user \
+--password itversity \
+--table orders \
+--target-dir /user/sumitsinha1680/problem5/parquet \
+--as-parquetfile
+
+//Transform/Convert data-files at /user/cloudera/problem5/avro and store the converted file at the following locations and file formats
+save the data to hdfs using snappy compression as parquet file at /user/cloudera/problem5/parquet-snappy-compress
+save the data to hdfs using gzip compression as text file at /user/cloudera/problem5/text-gzip-compress
+save the data to hdfs using no compression as sequence file at /user/cloudera/problem5/sequence
+save the data to hdfs using snappy compression as text file at /user/cloudera/problem5/text-snappy-compress
 
 
 
